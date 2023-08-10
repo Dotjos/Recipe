@@ -7,10 +7,8 @@ import { resultHTML } from "./view.js";
 function updateRes(results) {
   sideBar.innerHTML = "";
   results.forEach((result) => {
-    console.log(result);
     const { image_url, title } = result;
     const resultMarkUp = resultHTML(image_url, title);
-    console.log(resultMarkUp);
     sideBar.insertAdjacentElement("beforeend", resultMarkUp);
   });
 }

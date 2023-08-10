@@ -4,12 +4,14 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
+
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Lato:ital@1&family=Moon+Dance&family=Outfit:wght@400;700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto+Condensed:ital,wght@0,300;0,400;0,700;1,300&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Sacramento&family=Space+Grotesk:wght@500&family=Ubuntu:wght@300;400;500;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Lato:ital@1&family=Moon+Dance&family=Outfit:wght@400;700&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto+Condensed:ital,wght@0,300;0,400;0,700;1,300&family=Roboto+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Sacramento&family=Space+Grotesk:wght@500&family=Ubuntu:wght@300;400;500;700&display=swap"
       rel="stylesheet"
     />
+
     <link rel="stylesheet" href="./output.css" />
     <link
       rel="shortcut icon"
@@ -19,12 +21,12 @@
     <script type="module" src="./controller.js"></script>
   </head>
   <body
-    class="bg-gradient-to-r from-limeDream to-joseGreen h-screen font-Ubuntu"
+    class="bg-gradient-to-r p-4 from-limeDream to-joseGreen h-full font-Ubuntu"
   >
-    <div class="wrapper p-4 h-screen border w-full">
+    <div class="wrapper w-full">
       <nav class="ml-auto mr-auto flex pt-4 xl:pl-9">
         <img
-          src="/src/assets/icons8-restaurant-80.png"
+          src="./assets/icons8-restaurant-80.png"
           class="hidden xl:inline-block w-16"
         />
         <h1
@@ -41,7 +43,7 @@
             "
           />
           <button
-            class="flex absolute searchButton right-0 bg-gradient-to-l w-1/3 from-limeDream p-2.5 sm:p-3.5 to-joseGreen rounded-2xl justify-around ml-4 xl:rounded-full xl:p-6"
+            class="flex absolute searchButton font-robotoMono right-0 bg-gradient-to-l w-1/3 from-limeDream p-2.5 sm:p-3.5 to-joseGreen rounded-2xl justify-around ml-4 xl:rounded-full xl:p-6"
           >
             <img
               src="/src/assets/icons8-search-24.png"
@@ -49,19 +51,19 @@
               alt=""
             />
             <h1
-              class="text-xl font-semibold xl:text-2xl lg:uppercase xl:font-light"
+              class="text-xl font-medium xl:text-2xl lg:uppercase xl:font-light font-robotoMono"
             >
               Search
             </h1>
           </button>
         </div>
       </nav>
-      <main class="mt-10 pt-10 pl-7 pr-7 flex justify-between">
-        <div class="searchRes h-64">
-          <!-- <h1 class="text-center text-2xl font-thin">
+      <main class="mt-10 pt-10 flex justify-between xl:p-16">
+        <div class="searchRes xl:w-1/3">
+          <h1 class="text-center text-2xl font-normal font-robotoMono">
             Want to know what makes that meal delicious? We have all the recipes
             here detailed for you.
-          </h1> -->
+          </h1>
         </div>
         <div class="mainStr w-2/4 hidden xl:inline-block"></div>
       </main>
