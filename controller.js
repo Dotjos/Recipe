@@ -1,17 +1,42 @@
 const searchText = document.querySelector(".searchText");
 const searchButton = document.querySelector(".searchButton");
 const sideBar = document.querySelector(".searchRes");
+const rendSect = document.querySelector(".mainStr");
 import { fetchData } from "./model.js";
-import { resultHTML } from "./view.js";
+import { resultHTML, renderView } from "./view.js";
 
 function updateRes(results) {
   sideBar.innerHTML = "";
-  results.forEach((result) => {
-    const { image_url, title } = result;
+  const delay = 300;
+  results.forEach((result, index) => {
+    const { image_url, title, publisher, source_url } = result;
     const resultMarkUp = resultHTML(image_url, title);
-    sideBar.insertAdjacentElement("beforeend", resultMarkUp);
+
+    setTimeout(() => {
+      sideBar.insertAdjacentElement("beforeend", resultMarkUp);
+
+      setTimeout(() => {
+        sideBar.style.opacity = "1";
+      }, 100);
+    }, index * delay);
   });
 }
+
+// function displayOnClickS() {
+//   resultMarkUp.addEventListener(
+//     "click",
+//     renderView(
+//       rendSect,
+//       image_url,
+//       title,
+//       "./assets/icons8-bookmark-64.png",
+//       "./assets/icons8-time-50.png",
+//       publisher,
+//       "./assets/icons8-right-50.png",
+//       source_url
+//     )
+//   );
+// }
 
 async function searchBtnClick() {
   const query = searchText.value;
