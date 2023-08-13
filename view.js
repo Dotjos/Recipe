@@ -1,7 +1,6 @@
-export function resultHTML(image, title) {
+export function resultHTML(image, title, callBack) {
   const resDiv = document.createElement("div");
   resDiv.classList.add(
-    // "justify-between",
     "flex",
     "h-max",
     "bg-white",
@@ -12,8 +11,9 @@ export function resultHTML(image, title) {
   );
   resDiv.innerHTML = `
   <img src=${image} class="w-12 h-12 rounded-full mt-auto mb-auto">
-   <h1 class="ml-6 font-robotoMono text-lg font-semibold text-left text-grayishLimeGreen mt-auto mb-auto   " >${title}.</h1>
+   <h1 class="ml-6 font-robotoMono text-lg font-semibold text-left text-grayishLimeGreen mt-auto mb-auto do  " >${title}.</h1>
 `;
+  resDiv.addEventListener("click", callBack);
   return resDiv;
 }
 
@@ -27,15 +27,20 @@ export function renderView(
   arrowImage,
   chefLink
 ) {
-  //Learnt about how insecure it is using innerHTML, hence the use of fragment
+  //Learnt about how insecure it is using innerHTML, hence the use of documentfragment
   const rendView = document.createDocumentFragment();
+  // This is the image div
   const imgDiv = document.createElement("Div");
+  imgDiv.classList.add("border", "relative");
   const recImg = document.createElement("img");
   recImg.src = image;
+  recImg.classList.add("border", "rounded-full", "absolute");
   const recTitle = document.createElement("h1");
   recTitle.textContent = title;
+  recTitle.classList.add("absolute", "bottom-0");
   imgDiv.appendChild(recImg);
   imgDiv.appendChild(recTitle);
+
   const cookDiv = document.createElement("div");
   const timeDiv = document.createElement("div");
   const cookTime = document.createElement("h1");
@@ -71,5 +76,9 @@ export function renderView(
   rendView.appendChild(cookDiv);
   rendView.appendChild(ingreDiv);
   rendView.appendChild(footerDiv);
+  rendView.appendChild(footBtn);
+  while (container.firstChild) {
+    container.removeChild(container.firstChild);
+  }
   container.appendChild(rendView);
 }
