@@ -635,6 +635,14 @@ video {
   width: 100%;
 }
 
+.w-10 {
+  width: 2.5rem;
+}
+
+.w-1\/5 {
+  width: 20%;
+}
+
 @keyframes spin {
   to {
     transform: rotate(360deg);
@@ -671,6 +679,10 @@ video {
 
 .rounded-xl {
   border-radius: 0.75rem;
+}
+
+.border {
+  border-width: 1px;
 }
 
 .border-t-4 {
@@ -734,6 +746,10 @@ video {
   padding-top: 2.5rem;
 }
 
+.pt-3 {
+  padding-top: 0.75rem;
+}
+
 .text-left {
   text-align: left;
 }
@@ -763,16 +779,6 @@ video {
 .text-lg {
   font-size: 1.125rem;
   line-height: 1.75rem;
-}
-
-.text-xl {
-  font-size: 1.25rem;
-  line-height: 1.75rem;
-}
-
-.text-3xl {
-  font-size: 1.875rem;
-  line-height: 2.25rem;
 }
 
 .text-xs {
@@ -856,6 +862,10 @@ video {
   }
 
   .xl\:w-2\/4 {
+    width: 50%;
+  }
+
+  .xl\:w-1\/2 {
     width: 50%;
   }
 

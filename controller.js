@@ -36,12 +36,13 @@ function updateRes(results) {
     }, index * delay);
   });
   createPaginationControls(results);
+  paginationArea.classList.remove("hidden");
 }
 
 function createPaginationControls(data) {
   // Create Previous button
   const prevButton = document.createElement("button");
-  prevButton.classList.add("rounded-md");
+  prevButton.classList.add("w-10", "mt-auto", "mb-auto");
   prevButton.textContent = "Previous";
   prevButton.addEventListener("click", () => {
     if (currentPage > 1) {
@@ -52,6 +53,7 @@ function createPaginationControls(data) {
 
   // Create Next button
   const nextButton = document.createElement("button");
+  nextButton.classList.add("mt-auto", "mb-auto");
   nextButton.textContent = "Next";
   nextButton.addEventListener("click", () => {
     if (currentPage < totalPages) {
@@ -66,13 +68,15 @@ function createPaginationControls(data) {
   pageNumbers.classList.add(
     "ml-auto",
     "mr-auto",
-    "w-1/3",
+    "w-1/5",
     "flex",
-    "justify-between"
+    "justify-between",
+    "mt-auto",
+    "mb-auto"
   );
   for (let i = 1; i <= totalPages; i++) {
     const pageNumber = document.createElement("span");
-    pageNumber.classList.add("rounded-md", "p-3");
+    // pageNumber.classList.add("text-xs");
     pageNumber.textContent = i;
     pageNumber.addEventListener("click", () => {
       currentPage = i;
@@ -100,9 +104,9 @@ async function initialize() {
 
 async function searchBtnClick() {
   query = searchText.value;
+  initialize();
   try {
     const result = await fetchData(query);
-    initialize();
     updateRes(result);
   } catch (error) {
     displayFunc(sideBar, error, paginationArea);
