@@ -5,7 +5,7 @@ export async function fetchData(query) {
     );
 
     if (!response.ok) {
-      throw new Error("Ooops, no detail for that particular query");
+      throw new Error("Ooops, no detail for that particular query.");
     }
     const data = await response.json();
     console.log(data);
