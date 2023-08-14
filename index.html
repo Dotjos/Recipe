@@ -37,9 +37,9 @@
         <div class="relative w-2/3 ml-auto mr-auto xl:w-2/4">
           <input
             type="text"
-            class="absolute searchText rounded-2xl text-lg w-full p-2.5 mt-auto mb-auto outline-none sm:text-2xl xl:p-6 xl:rounded-full"
+            class="absolute searchText rounded-2xl text-xs w-full p-2.5 mt-auto mb-auto outline-none sm:text-2xl xl:p-6 xl:rounded-full"
             maxlength="20"
-            placeholder="Search for your recipe...
+            placeholder="Search here...
             "
           />
           <button
@@ -51,7 +51,7 @@
               alt=""
             />
             <h1
-              class="text-xl font-medium xl:text-2xl lg:uppercase xl:font-light font-robotoMono"
+              class="text-xs font-medium xl:text-2xl lg:uppercase xl:font-light font-robotoMono"
             >
               Search
             </h1>
@@ -59,19 +59,19 @@
         </div>
       </nav>
       <main class="mt-10 pt-10 flex justify-between">
-        <div
-          class="searchRes xl:w-1/3 opacity-0 transition-opacity duration-1000"
-        >
+        <div class="searchRes w-full transition-opacity duration-1000">
           <h1 class="text-center text-2xl font-normal font-robotoMono">
             Want to know what makes that meal delicious? We have all the recipes
             here detailed for you.
           </h1>
         </div>
-
-        <div class="mainStr w-2/4 hidden xl:inline-block"></div>
+        <div
+          class="animate-spin hidden rounded-full h-24 ml-auto mr-auto w-16 border-t-4 border-grayishLimeGreen"
+        ></div>
+        <div class="mainStr w-2/4 hidden xl:inline-block rounded-xl"></div>
       </main>
       <footer
-        class="paginationArea flex justify-between xl:w-1/3 h-14 font-black"
+        class="paginationArea text-lg w-full flex justify-between xl:w-1/3 h-14 font-black"
       ></footer>
     </div>
   </body>

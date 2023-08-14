@@ -1,14 +1,15 @@
 const searchText = document.querySelector(".searchText");
 const searchButton = document.querySelector(".searchButton");
 const sideBar = document.querySelector(".searchRes");
-const rendSect = document.querySelector(".mainStr");
-const query = searchText.value;
 const paginationArea = document.querySelector(".paginationArea");
+const main = document.querySelector("main");
 import { fetchData } from "./model.js";
-import { resultHTML, renderView } from "./view.js";
+import { resultHTML, displayFunc } from "./view.js";
+
 const itemsPerPage = 9;
 let currentPage = 1;
 let totalPages;
+let query;
 
 function updateRes(results) {
   //Pagination
@@ -23,7 +24,8 @@ function updateRes(results) {
   const delay = 200;
   reciperAge.forEach((result, index) => {
     const { image_url, title } = result;
-    const resultMarkUp = resultHTML(image_url, title, displayOnClick);
+    const resultMarkUp = resultHTML(image_url, title);
+    console.log(resultHTML);
     resultMarkUp.setAttribute("data-index", index);
     setTimeout(() => {
       sideBar.insertAdjacentElement("beforeend", resultMarkUp);
@@ -61,10 +63,16 @@ function createPaginationControls(data) {
 
   // Create Page numbers
   const pageNumbers = document.createElement("div");
-  pageNumbers.classList.add("p-3");
+  pageNumbers.classList.add(
+    "ml-auto",
+    "mr-auto",
+    "w-1/3",
+    "flex",
+    "justify-between"
+  );
   for (let i = 1; i <= totalPages; i++) {
     const pageNumber = document.createElement("span");
-    pageNumber.classList.add("border", "rounded-md", "p-3", "ml-2");
+    pageNumber.classList.add("rounded-md", "p-3");
     pageNumber.textContent = i;
     pageNumber.addEventListener("click", () => {
       currentPage = i;
@@ -83,41 +91,21 @@ function createPaginationControls(data) {
 }
 
 async function initialize() {
-  const fetcheData = await fetchData();
+  const fetcheData = await fetchData(query);
   totalPages = Math.ceil(fetcheData.length / itemsPerPage);
   return totalPages;
 }
 
-initialize();
-
-export async function displayOnClick(event) {
-  const clickedElement = event.currentTarget;
-  const clickedIndex = clickedElement.getAttribute("data-index");
-  try {
-    const result = await fetchData(query);
-    const { image_url, title, publisher, source_url, publisher_url } =
-      result[clickedIndex];
-    renderView(
-      rendSect,
-      image_url,
-      title,
-      "./assets/icons8-bookmark-64.png",
-      "./assets/icons8-time-50.png",
-      publisher,
-      "./assets/icons8-right-50.png",
-      publisher_url
-    );
-  } catch (error) {
-    console.error(console.log(error));
-  }
-}
+// initialize();
 
 async function searchBtnClick() {
+  query = searchText.value;
   try {
     const result = await fetchData(query);
+    initialize();
     updateRes(result);
   } catch (error) {
-    console.error("Error fetching data:", error);
+    displayFunc(sideBar, error, paginationArea);
   }
 }
 
